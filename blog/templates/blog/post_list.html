@@ -8,55 +8,12 @@
             <h1><a href="/">Tan's Blog</a></h1>
         </header>
 
-        <article>
-            <h2><a href="">Sample Post</a></h2>
-            <time>Published: 06.07.2023, 12:22</time>
-            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        </article>
-
-        <article>
-            <h2><a href="">Some HTML tag descriptions and implementations!</a></h2>
-            <time>Published: 06.07.2023, 12:24</time>
-            <p>
-                &lt;head&gt; is an element that contains information about the document that is not displayed on the screen.
-                <br>&lt;body&gt; is an element that contains everything else that is displayed as part of the web page.
-                <h1>&lt;hx&gt; tags are headers and they decrease in importance the higher x is x = {1,2,3,4,5,6}.</h1>
-                <br>&lt;br&gt; goes to another line and doesnt need to be closed like other tags.
-                <br><strong>&lt;strong&gt; strongly emphasize text.</strong>
-                <h2><strong>&lt;h2&gt; with &lt;strong&gt;.</strong></h2>
-                <em>&lt;em&gt; emphasizes your text.</em><br>
-                <em><strong>&lt;em&gt; with &lt;strong&gt;.</strong></em>
-                <h3><em>&lt;h3&gt; with &lt;em&gt;.</em></h3>
-                <h4>&lt;h4&gt;.</h4>
-                <h5>&lt;h5&gt;.</h5>
-                <h6><strong>&lt;h6&gt; with &lt;strong&gt;.</strong></h6>
-                <p>
-                    &lt;p&gt; defines a paragraph of text.
-                </p>
-                
-                <p>
-                    <em>&lt;p&gt; with &lt;em&gt;.</em>
-                </p>
-                <p>
-                    <strong>&lt;p&gt; with &lt;strong&gt;.</strong>
-                </p>
-                <p>
-                    <em><strong>&lt;p&gt; with &lt;em&gt; and &lt;strong&gt;.</strong></em>
-                </p>
-                <br>&lt;a href = "your_url"&gt;link&lt;/a&gt; creates a <a href = "https://wosertan.pythonanywhere.com">link</a>.
-                <ul>&lt;ul&gt; defines an unordered (bulleted) list.</ul>
-                <li>&lt;li&gt; defines a list item.</li>
-                <ul><li>&lt;ul&gt; combined with &lt;li&gt; creates an unordered (bulleted) list.</li><li>like this!</li><li>and this!</li></ul>
-                <div>&lt;div&gt; defines a section of the page.</div>
-                <nav>&lt;nav&gt; defines a set of navigation links.</nav>
-                <article>&lt;article&gt; specifies independent, self contained content.</article>
-                <section>&lt;section&gt; defines a section in a document.</section>
-                <header>&lt;header&gt; specifies a header for a document or section.</header>
-                <main>&lt;main&gt; specifies the main content of a document.</main>
-                <aside>&lt;aside&gt; defines some content aside from the content.</aside>
-                <footer>&lt;footer&gt; defines a footer for a document or section.</footer>
-                <time>&lt;time&gt; defines a specific time (or datetime).</time>
-            </p>
-        </article>
+        {% for post in posts%}
+            <article>
+                <time>published: {{ post.published_date }}</time>
+                <h2><a href="">{{ post.title }}</a></h2>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </article>
+        {% endfor %}
     </body>
 </html>
