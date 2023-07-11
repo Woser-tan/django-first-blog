@@ -11,6 +11,9 @@ venv/
 # Database
 db.sqlite3
 
+# Local Settings
+local_settings.py
+
 # Static folder at project root
 /static/
 
