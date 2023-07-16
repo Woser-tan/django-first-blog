@@ -28,7 +28,7 @@ class Post(models.Model):
 
     def approved_comments(self):
 
-        return Comments.get_all(self)
+        return Comments.get_approved(self)
 
 
 class Comment(models.Model):
