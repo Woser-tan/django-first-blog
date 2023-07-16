@@ -38,13 +38,15 @@
                 {{ comment.created_date }}
                 {% if not comment.approved_comment %}
                     <a class="btn btn-secondary" href="{% url 'comment_remove' pk=comment.pk %}">
+                        Remove
                         <span class="glyphicon glyphicon-remove">
-                            Remove
+                               
                         </span>
                     </a>
                     <a class="btn btn-secondary" href="{% url 'comment_approve' pk=comment.pk %}">
+                        Approve
                         <span class="glyphicon glyphicon-ok">
-                            Approve
+                                
                         </span>
                     </a>
                 {% endif %}

@@ -4,11 +4,11 @@ from django.utils import timezone
 
 
 # Create your models here.
-
-class ApprovedComment(models.Manager):
-    def get_queryset(self):
-        return super().get_queryset().filter(approved_comment=True)
-
+class Comments(models.Manager):
+    def get_all(self):
+        return self.comments.all()
+    def get_approved(self):
+        return self.comments.filter(approved_comment=True)
 
 class Post(models.Model):
 
@@ -17,9 +17,8 @@ class Post(models.Model):
     text           = models.TextField()
     created_date   = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    
-    def publish(self):
 
+    def publish(self):
         self.published_date = timezone.now()
         self.save()
 
@@ -29,7 +28,7 @@ class Post(models.Model):
 
     def approved_comments(self):
 
-        return self.comments.all_approved_comments
+        return Comments.get_all(self)
 
 
 class Comment(models.Model):
@@ -38,11 +37,8 @@ class Comment(models.Model):
     author                = models.CharField(max_length=200)
     text                  = models.TextField()
     created_date          = models.DateTimeField(default=timezone.now)
-    approved_comment      = models.BooleanField (default=False)
-
-    all_comments = models.Manager()
-    all_approved_comments = ApprovedComment()
-
+    approved_comment      = models.BooleanField(default=False)
+    
 
     def approve(self):
 
